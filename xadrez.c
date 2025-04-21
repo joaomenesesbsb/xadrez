@@ -26,174 +26,162 @@ void mostrarTabuleiro() {
 
 void movimentarTorre(char *direcao, int casas){
 
-    printf("\n\nMOVIMENTANDO A TORRE\n");
-
-    if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0)) {
-        for(int i = 0; i < casas; i++){
-            printf("%d - Movimento para esquerda\n", i);
+    if(casas > 0){
+        if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (casas > 0)){
+            printf("Esquerda\n");
+        } else 
+        if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") == 0) && (casas > 0)){
+            printf("Direita\n");
         }
-    } else 
-    if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") == 0)){
-        for(int i = 0; i < casas; i++){
-            printf("%d - Movimento para direita\n", i);
+        else 
+        if ((strcmp(direcao, "CIMA") == 0 || strcmp(direcao, "cima") == 0) && (casas > 0)){
+            printf("Cima\n");
+        }else 
+        if ((strcmp(direcao, "BAIXO") == 0 || strcmp(direcao, "baixo") == 0) && (casas > 0)){
+            printf("Baixo\n");
         }
-    }
-    else 
-    if ((strcmp(direcao, "CIMA") == 0 || strcmp(direcao, "cima") == 0)){
-        for(int i = 0; i < casas; i++){
-            printf("%d - Movimento para cima\n", i);
-        }
-    }else 
-    if ((strcmp(direcao, "BAIXO") == 0 || strcmp(direcao, "baixo") == 0)){
-        for(int i = 0; i < casas; i++){
-            printf("%d - Movimento para baixo\n", i);
-        }
+        movimentarTorre(direcao,casas - 1);
     }
 
     //[DEBUG]
-    printf("[DEBUG] - Quantidade de casas solicitadas [%d]\n", casas);
-    printf("[DEBUG] - Direcao solicitada [%s]\n", direcao);
+    //printf("[DEBUG] - Quantidade de casas solicitadas [%d]\n", casas);
+    //printf("[DEBUG] - Direcao solicitada [%s]\n", direcao);
 }
 void movimentarBispo(char *direcao,char diagonal[5], int casas){
-    int i = 0;
 
-    printf("\n\nMOVIMENTANDO O BISPO\n");
+    if(casas > 0){
 
-    while(i < casas){
-        if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (strcmp(diagonal, "CIMA") == 0 || strcmp(diagonal, "cima") == 0)) {
-                printf("%d - Movimento para a diagonal esquerda-cima\n", i);
-        } else 
-        if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (strcmp(diagonal, "BAIXO") == 0 || strcmp(diagonal, "baixo") == 0)) {
-                printf("%d - Movimento para a diagonal esquerda-baixo\n", i);
-        }else 
-        if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") ==0) && (strcmp(diagonal, "CIMA") == 0 || strcmp(diagonal, "cima") == 0)) {
-                printf("%d - Movimento para a diagonal direita-cima\n", i);
-        }else 
-        if ((strcmp(direcao, "DIREITA") == 0|| strcmp(direcao, "direita") == 0) && (strcmp(diagonal, "BAIXO") == 0 || strcmp(diagonal, "baixo") == 0)) {
-                printf("%d - Movimento para a diagonal direita-baixo\n", i);
-        }
-        
-        i++;
+    if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (strcmp(diagonal, "CIMA") == 0 || strcmp(diagonal, "cima") == 0)) {
+            printf("Diagonal esquerda-cima\n");
+    } else 
+    if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (strcmp(diagonal, "BAIXO") == 0 || strcmp(diagonal, "baixo") == 0)) {
+            printf("Diagonal esquerda-baixo\n");
+    }else 
+    if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") ==0) && (strcmp(diagonal, "CIMA") == 0 || strcmp(diagonal, "cima") == 0)) {
+            printf("Diagonal direita-cima\n");
+    }else 
+    if ((strcmp(direcao, "DIREITA") == 0|| strcmp(direcao, "direita") == 0) && (strcmp(diagonal, "BAIXO") == 0 || strcmp(diagonal, "baixo") == 0)) {
+            printf("Diagonal direita-baixo\n");
+    }
+
+        movimentarBispo(direcao,diagonal,casas - 1);
     }
     //DEBUG
-    printf("[DEBUG] - Quantidade de casas solicitadas [%d]\n", casas);
-    printf("[DEBUG] - Direcao solicitada [%s]\n", direcao);
-    printf("[DEBUG] - Diagonal solicitada [%s]\n", diagonal);
+    //printf("[DEBUG] - Quantidade de casas solicitadas [%d]\n", casas);
+    //printf("[DEBUG] - Direcao solicitada [%s]\n", direcao);
+    //printf("[DEBUG] - Diagonal solicitada [%s]\n", diagonal);
 }
 
 void movimentarRainha(char *direcao,char diagonal[5], int casas){
-    int i = 0;
 
-    printf("\n\nMOVIMENTANDO O RAINHA\n");
-
-    do{
-
+    if(casas > 0){
         //DIAGONAIS
         if( (strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (strcmp(diagonal, "CIMA") == 0 || strcmp(diagonal, "cima") == 0)) {
-            printf("%d - Movimento para a diagonal esquerda-cima\n", i);
+            printf("Diagonal esquerda-cima\n");
         } else 
         if( (strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (strcmp(diagonal, "BAIXO") == 0 || strcmp(diagonal, "baixo") == 0)) {
-            printf("%d - Movimento para a diagonal esquerda-baixo\n", i);
+            printf("Diagonal esquerda-baixo\n");
         }else 
         if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") ==0) && (strcmp(diagonal, "CIMA") == 0 || strcmp(diagonal, "cima") == 0)){
-            printf("%d - Movimento para a diagonal direita-cima\n", i);
+            printf("Diagonal direita-cima\n");
         }else 
         if ((strcmp(direcao, "DIREITA") == 0|| strcmp(direcao, "direita") == 0) && (strcmp(diagonal, "BAIXO") == 0 || strcmp(diagonal, "baixo") == 0)){
-            printf("%d - Movimento para a diagonal direita-baixo\n", i);
+            printf("Diagonal direita-baixo\n");
         } 
 
         //RETAS
         if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && strcmp(diagonal, "null") == 0) {
-            printf("%d - Movimento para esquerda\n", i);
+            printf("Esquerda\n");
         } else 
         if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") == 0) && strcmp(diagonal, "null") == 0){
-            printf("%d - Movimento para direita\n", i);
+            printf("Direita\n");
         }
         else 
         if ((strcmp(direcao, "CIMA") == 0 || strcmp(direcao, "cima") == 0) && strcmp(diagonal, "null") == 0){
-            printf("%d - Movimento para cima\n", i);
+            printf("Cima\n");
         }else 
         if ((strcmp(direcao, "BAIXO") == 0 || strcmp(direcao, "baixo") == 0) && strcmp(diagonal, "null") == 0){
-            printf("%d - Movimento para baixo\n", i);
+            printf("Baixo\n");
         }
-    i++;
-    } while(i < casas);
+        movimentarRainha(direcao,diagonal, casas - 1);
+    }
+
        
     
     //DEBUG
-    printf("[DEBUG] - Quantidade de casas solicitadas [%d]\n", casas);
-    printf("[DEBUG] - Direcao solicitada [%s]\n", direcao);
-    printf("[DEBUG] - Diagonal solicitada [%s]\n", diagonal);
+    //printf("[DEBUG] - Quantidade de casas solicitadas [%d]\n", casas);
+    //printf("[DEBUG] - Direcao solicitada [%s]\n", direcao);
+    //printf("[DEBUG] - Diagonal solicitada [%s]\n", diagonal);
 }
 
 void movimentarCavalo(char *direcao, char *perpendicular){
 
-    int test = 1;
-    int j = 0;
-    
-    printf("\n\nMOVIMENTANDO O CAVALO\n");
-
-    for(int i = 0; i < test; i++){
-        while (j < 2)
-        {
-            if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0)) {
+    for(int i = 0, j = 0; i < 1 || j < 2; i++ , j++){
+        if((strcmp(direcao, "ESQUERDA") == 0 || strcmp(direcao, "esquerda") == 0) && (j < 2)) {
                 
-                    printf("%d - Movimento para esquerda\n", i);
+            printf("Esquerda\n");
                 
-            } else 
-            if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") == 0)){
+        } else 
+        if ((strcmp(direcao, "DIREITA") == 0 || strcmp(direcao, "direita") == 0) && (j < 2)){
                 
-                    printf("%d - Movimento para direita\n", i);
+            printf("Direita\n");
                 
-            }
-            else 
-            if ((strcmp(direcao, "CIMA") == 0 || strcmp(direcao, "cima") == 0)){
+        }
+        else 
+        if ((strcmp(direcao, "CIMA") == 0 || strcmp(direcao, "cima") == 0) && (j < 2)){
                
-                    printf("%d - Movimento para cima\n", i);
+            printf("Cima\n");
                 
-            }else 
-            if ((strcmp(direcao, "BAIXO") == 0 || strcmp(direcao, "baixo") == 0)){
+        }else 
+        if ((strcmp(direcao, "BAIXO") == 0 || strcmp(direcao, "baixo") == 0) && (j < 2)){
                 
-                    printf("%d - Movimento para baixo\n", i);
+            printf("Baixo\n");
                      
-                   
-            }
-            j++; 
         }
-        if((strcmp(perpendicular, "ESQUERDA") == 0 || strcmp(perpendicular, "esquerda") == 0)){
-            printf("1 - Movimento para esquerda em perpendicular\n");
+        
+        if((strcmp(perpendicular, "ESQUERDA") == 0 || strcmp(perpendicular, "esquerda") == 0) && ( i < 1)){
+            printf("Esquerda\n");
         } else 
-        if((strcmp(perpendicular, "DIREITA") == 0 || strcmp(perpendicular, "direita") == 0)){
-            printf("1 - Movimento para direita em perpendicular\n");
+        if((strcmp(perpendicular, "DIREITA") == 0 || strcmp(perpendicular, "direita") == 0) && ( i < 1)){
+            printf("Direita\n");
         }
-        if((strcmp(perpendicular, "CIMA") == 0 || strcmp(perpendicular, "cima") == 0)){
-            printf("1 - Movimento para cima\n");
+        if((strcmp(perpendicular, "CIMA") == 0 || strcmp(perpendicular, "cima") == 0) && ( i < 1)){
+            printf("Cima\n");
         } else 
-        if((strcmp(perpendicular, "BAIXO") == 0 || strcmp(perpendicular, "baixo") == 0)){
-            printf("1 - Movimento para baixo\n");
+        if((strcmp(perpendicular, "BAIXO") == 0 || strcmp(perpendicular, "baixo") == 0) && ( i < 1)){
+            printf("Baixo\n");
         }
     }
-    printf("[DEBUG] - esperado [2 movimentos para: %s -  1 movimento para: %s]\n", direcao, perpendicular);
+    //DEBUG
+    //printf("[DEBUG] - esperado [2 movimentos para: %s -  1 movimento para: %s]\n", direcao, perpendicular);
 }
     
 
 int main(){
     
-    /*
+    //mostrarTabuleiro();
+
+    
     //Movimenta a Torre
-    movimentarTorre("direita", 2);
+    printf("\n\nMOVIMENTANDO A TORRE\n\n");
+
+    movimentarTorre("direita", 1);
     movimentarTorre("esquerda", 2);
     movimentarTorre("cima", 4);
     movimentarTorre("baixo", 1);
     
-
+    
     //Movimenta o bispo
+    printf("\n\nMOVIMENTANDO O BISPO\n\n");
+
     movimentarBispo("esquerda", "cima",3);
     movimentarBispo("esquerda", "baixo",1);
     movimentarBispo("direita", "cima",4);
     movimentarBispo("direita", "baixo",2);
     
-    
+    //movimentar rainha
+    printf("\n\nMOVIMENTANDO A RAINHA\n\n");
+
     movimentarRainha("esquerda", "cima", 1);
     movimentarRainha("esquerda", "baixo", 1);
     movimentarRainha("esquerda", "null", 1);
@@ -202,11 +190,11 @@ int main(){
     movimentarRainha("direita", "null", 1);
     movimentarRainha("cima", "null", 1);
     movimentarRainha("baixo", "null", 1);
+    
 
-
-    //mostrarTabuleiro();
-    */
     //movimento cavalo
+    printf("\n\nMOVIMENTANDO O CAVALO\n\n");
+
     movimentarCavalo("esquerda", "cima");
     movimentarCavalo("esquerda", "baixo");
     movimentarCavalo("direita", "cima");
@@ -215,5 +203,5 @@ int main(){
     movimentarCavalo("cima", "esquerda");
     movimentarCavalo("baixo", "direita");
     movimentarCavalo("baixo", "esquerda");
-
+    
 }
